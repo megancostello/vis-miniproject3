@@ -1,3 +1,6 @@
+import salaryAndAcceptanceGraph from "./salary_acceptance.js";
+import salaryAndPriceGraph from "./salary_price.js";
+
 export default function pieChart(data) {
 
     const margin = {top:20, left:50, right:20, bottom:20};
@@ -102,6 +105,14 @@ export default function pieChart(data) {
         .on("click", function(d, i) {
             // Do something after clicking a bar
                 console.log("CLICKED");
+                let valueType = i.data.type;
+                console.log("d ", d);
+                console.log("i ", i.data.type);
+                let newData =  data.filter(d=>d.Public_Private == valueType);
+
+                salaryAndAcceptanceGraph(newData);
+                salaryAndPriceGraph(newData);
+
             });
 
     pieGroup

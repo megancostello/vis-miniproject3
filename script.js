@@ -1,4 +1,6 @@
 import pieChart from "./pieChart.js";
+import salaryAndAcceptanceGraph from "./salary_acceptance.js";
+import salaryAndPriceGraph from "./salary_price.js";
 
 let quartiles = {};
 let type;
@@ -19,6 +21,9 @@ d3.csv('universities.csv', d3.autoType).then(data=>{
 
 function update(data) {
     pieChart(data);
+    salaryAndAcceptanceGraph(data);
+    salaryAndPriceGraph(data);
+
 }
 
 function handler(event) {
