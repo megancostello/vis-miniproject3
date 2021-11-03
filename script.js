@@ -3,7 +3,7 @@ import pieChart from "./pieChart.js";
 let quartiles = {};
 let type;
 
-d3.csv('ForbesColleges2019.csv', d3.autoType).then(data=>{ 
+d3.csv('universities.csv', d3.autoType).then(data=>{ 
         quartiles.first = data.filter(d=>d.Rank >= 1 && d.Rank <= 163);
         quartiles.second = data.filter(d=>d.Rank >= 164 && d.Rank <= 326);
         quartiles.third = data.filter(d=>d.Rank >= 327 && d.Rank <= 488);
@@ -35,6 +35,11 @@ function handler(event) {
     else 
         update(quartiles.fourth);
     
+}
+
+function filterData(data, type) {
+    let newData =  data.filter(d=>d.Public_Private == type);
+    update(newData);
 }
 
 // TODO: Define an event listener for the dropdown menu

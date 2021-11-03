@@ -40,7 +40,7 @@ export default function pieChart(data) {
     let totalPriv = 0;
 
     collegeData.forEach(function(d) {
-        if (d.PublicPrivate == "Public") 
+        if (d.Public_Private == "Public") 
             totalPub += 1;
         else
             totalPriv += 1;
