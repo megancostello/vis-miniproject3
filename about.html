@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <head>
+        <title>About</title>
+    </head>
+        <body>
+            <h1>About</h1>
+            <a href="index.html">Back to Main</a>
+            <h3>Motivations</h3>
+            <p>We were motivated to use this dataset for several reasons: </p>
+            <ul>
+                <li>It felt personally relevant because we are currently college students and it was interesting to learn about where our college stood in the college rankings</li>
+                <li>It was interesting to learn about the relationship between different variables to see if there was a correlation, whether positive or negative, between the two. In this case, it felt like the data seemed to tell a story on its own. </li>    
+                <li>The dataset was relatively clean and contained variables of interests. It also did not have very many null or empty values so it was easy to use. </li>
+            </ul>
+
+            <h3>Design Rationale for Visual Encoding Decisions</h3>
+            <ul>
+                <li>We wanted to visually encode private and public school statistics because we thought it was interesting being able to compare the impact and implications that a private and public education can have. Because we were comparing two categorical values, it made sense to simply use two colors since that seemed to have the most visual impact while still being simple. </li>
+                <li>We decided to use a pie chart and represent the type breakdown of school via area, angle, and color. Typically, pie charts are not a great visual representation but in this case, we thought it was appropriate because it made it easy to see the breakdown of private vs. public schools in the top 650 universities in the US. </li>
+                <li>We decided on two scatter plots to demonstrate the relationship between average alumni salary and net price as well as the relationship between average alumni salary and acceptance rate because we believed a scatter plot is the strongest candidate for showing a relationship between two variables. In addition, the scatter plot made it easy to compare the impact that two different variables (acceptance rate, net price) can potentially have on another variable (average alumni salary) </li>
+                <li>All in all, we tried to make design decisions that were aesthetically pleasing, simple, and functional to our purposes </li>
+            </ul>
+
+            <h3>Takeaways </h3>
+            <ul>
+                <li>There are more private schools in the top 650 schools than we initially thought. However, it makes sense because public schools tend to have larger student populations so it’s possible that there’s less of a need for more public schools. It could also be attributed to the fact that we are looking at the top 650 schools in the US so maybe there are more public schools in the US than private, in general, but private schools tend to be ranked higher. </li>
+                    <ul>
+                        <li>In particular, we see that the first quartile is predominantly private schools but as we go down in ranking, the percentage breakdown of private vs public schools by ranking starts to even out a little bit more. </li>
+                    </ul>
+                <li>In general, we saw that there was a positive correlation between total annual cost and average alumni salary and a negative correlation between acceptance rate and average alumni salary. We were a bit surprised by such a strong positive correlation between total annual cost and alumni salary but we think this can be attributed to the fact that a lot of top-ranking schools (e.g. Harvard, Yale) tend to have high sticker prices, but offer a great education and tend to only accept exceptional students who are likely to pursue high-paying careers. </li>
+                
+            </ul>
+
+            <h3>Workload </h3>
+            <ul>
+                <li>Interactions, pie chart, dataset search = Megan </li>
+                <li>Dataset search, scatterplot = Ryan </li>
+                <li>Scatterplot, HTML, filtering functionality = Hannah </li>
+                
+            </ul>
+
+            <h3>Alternatives Tried </h3>
+            <ul>
+                <li>During our design process, we used Excel and Tableau to generate alternate visualizations </li>
+                
+            </ul>
+            <img src="/imgs/pic1.png" width="400">
+            <img src="/imgs/pic2.png" width="400">
+            <img src="/imgs/pic3.png" width="400">
+            <img src="/imgs/pic4.png" width="400">
+            <img src="/imgs/pic5.png" width="400">
+            <img src="/imgs/pic6.png" width="400">
+
+            <h3>Struggles </h3>
+            <ul>
+                <li>We struggled with implementing the interaction between the visualisations because it was relatively coding-intensive and had to be done collaboratively</li>
+                <li>The tooltip would sometimes appear and sometimes wouldn’t appear and we weren’t sure why </li>
+                <li>The styling in d3 was not very straightforward and it would take us a long time to try to style a very simple element </li>
+                <li>The design process was difficult and we had to go back and forth between design decisions </li>
+            </ul>
+
+            <h3>Lessons Learned </h3>
+            <ul>
+                <li>We realized that we had to put much more thought and effort into the design process for this project, because of the interactivity involved. It was difficult trying to make decision choices that would make the visualizations feel interactive and meaningful. We had a lot of ideas that would sound great in theory, but didn’t work in practice once we tried to implement it because we were missing the kind of data that would have made it possible. We tried to look towards the examples given for inspiration, but the visualizations they presented were pretty specific to their data. </li>
+                <li>It was also very difficult working on this on our own, with the element of interactivity between the visualizations incorporated. We initially thought that planning it would be something that we could all work on collaboratively and implementing was something we could do on our own, but it was impossible to do it with the extent of interactivity between the visualization and data involved. </li>
+            </ul>
+        </body>
+</html>

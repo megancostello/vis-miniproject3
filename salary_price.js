@@ -22,8 +22,10 @@ export default function salaryAndPriceGraph(data) {
                         .domain(d3.extent(data, d=> d.Alumni_Salary))
                         .range([height, 0]);
     
-        const color = d3.scaleOrdinal().domain(data)
+        const color = d3.scaleOrdinal()
+                        .domain(data)
                         .range(["steelblue", "coral"]);
+
         const population = d3.scaleSqrt()
                             .domain(d3.extent(data, d=> d.Undergraduate_Population))
                             .range([0, 20]);
@@ -48,7 +50,7 @@ export default function salaryAndPriceGraph(data) {
                 let undergradPop = d3.format(',.0f')(d.Undergraduate_Population);
     
                 const pos = d3.pointer(event, window);
-                console.log("position ", pos);
+                //console.log("position ", pos);
                 d3.select('#priceTooltip')
                     .style('left', pos[0]+'px')
                     .style('top', ()=>{

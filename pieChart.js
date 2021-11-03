@@ -55,12 +55,12 @@ export default function pieChart(data) {
 
     const pubPriv = [{type: "Public", value: percPub}, {type: "Private", value: percPriv}];
 
-    console.log("pubpriv ", pubPriv);
+    //console.log("pubpriv ", pubPriv);
   
     // Generate the pie
     const pie = d3.pie().value(function(d) {console.log(d); return d.value; });
 
-    console.log("pie ", pie);
+    //console.log("pie ", pie);
 
     //Generate groups
     const arcs = pie(pubPriv);
@@ -104,10 +104,10 @@ export default function pieChart(data) {
           })
         .on("click", function(d, i) {
             // Do something after clicking a bar
-                console.log("CLICKED");
+                //console.log("CLICKED");
                 let valueType = i.data.type;
-                console.log("d ", d);
-                console.log("i ", i.data.type);
+                //console.log("d ", d);
+                //console.log("i ", i.data.type);
                 let newData =  data.filter(d=>d.Public_Private == valueType);
 
                 salaryAndAcceptanceGraph(newData);

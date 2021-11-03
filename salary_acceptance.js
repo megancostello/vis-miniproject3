@@ -27,8 +27,10 @@ export default function salaryAndAcceptanceGraph(data) {
                         .domain(d3.extent(data, d=> d.Alumni_Salary))
                         .range([height, 0]);
     
-        const color = d3.scaleOrdinal().domain(data)
+        const color = d3.scaleOrdinal()
+                        .domain(data)
                         .range(["steelblue", "coral"]);
+                        
         const population = d3.scaleSqrt()
                             .domain(d3.extent(data, d=> d.Undergraduate_Population))
                             .range([0, 20]);
