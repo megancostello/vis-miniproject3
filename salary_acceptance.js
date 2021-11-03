@@ -2,10 +2,10 @@ export default function salaryAndAcceptanceGraph(data) {
 
     console.log('hello');
   
-    const margin = ({top: 40, right: 40, bottom: 40, left: 60});
+    const margin = ({top: 40, right: 60, bottom: 40, left: 60});
     
-    const width = 675 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const width = 600 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
 
     d3.select('.acceptanceChartBase').remove();
 
@@ -30,7 +30,7 @@ export default function salaryAndAcceptanceGraph(data) {
         const color = d3.scaleOrdinal()
                         .domain(data)
                         .range(["steelblue", "coral"]);
-                        
+
         const population = d3.scaleSqrt()
                             .domain(d3.extent(data, d=> d.Undergraduate_Population))
                             .range([0, 20]);

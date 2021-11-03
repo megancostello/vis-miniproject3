@@ -1,9 +1,9 @@
 export default function salaryAndPriceGraph(data) {
   
-    const margin = ({top: 40, right: 40, bottom: 40, left: 80});
+    const margin = ({top: 40, right: 60, bottom: 40, left: 80});
     
-    const width = 675 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const width = 600 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
 
     d3.select('.priceChartBase').remove();
     const svg = d3.select('.priceChart')
