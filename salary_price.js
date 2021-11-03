@@ -2,8 +2,8 @@ export default function salaryAndPriceGraph(data) {
   
     const margin = ({top: 40, right: 40, bottom: 40, left: 80});
     
-    const width = 700 - margin.left - margin.right;
-    const height = 700 - margin.top - margin.bottom;
+    const width = 675 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
 
     d3.select('.priceChartBase').remove();
     const svg = d3.select('.priceChart')
@@ -43,14 +43,23 @@ export default function salaryAndPriceGraph(data) {
                 let name = d.Name;
                 let rank = d.Rank;
                 let publicPrivate = d.Public_Private;
-                let netPrice = d3.format('.0f')(d.Total_Annual_Cost);
-                let alumniSalary = d.Alumni_Salary;
-                let undergradPop = d.Undergraduate_Population;
+                let netPrice = d3.format('($,.0f')(d.Total_Annual_Cost);
+                let alumniSalary = d3.format('($,.0f')(d.Alumni_Salary);
+                let undergradPop = d3.format(',.0f')(d.Undergraduate_Population);
     
                 const pos = d3.pointer(event, window);
+                console.log("position ", pos);
                 d3.select('#priceTooltip')
                     .style('left', pos[0]+'px')
-                    .style('top', pos[1]+'px')
+                    .style('top', ()=>{
+                        if (pos[1] > 600) {
+                            return (pos[1]-600)+"px";
+                        } 
+                        else {
+                            return pos[1]-400+"px";
+                        }
+                            
+                      })
                     .style('position', 'fixed')
                     .style('display', 'block')
                     .style('color', 'white')
@@ -60,13 +69,13 @@ export default function salaryAndPriceGraph(data) {
                         'School: ' + name + '<br/>' +
                         'Rank: ' + rank + '<br/>' +
                         'Public/Private: ' + publicPrivate + '<br/>' +
-                        'Acceptance Rate: ' + netPrice + '<br/>' +
+                        'Net Price: ' + netPrice + '<br/>' +
                         'Median Alumni Salary: ' + alumniSalary + '<br/>' +
                         'Undergraduate Population: ' + undergradPop
                     );
             })
             .on('mouseleave', function(event, d) {
-                d3.select('.tooltip')
+                d3.select('#priceTooltip')
                     .style('display', 'none');
             });
     

@@ -2,10 +2,10 @@ export default function salaryAndAcceptanceGraph(data) {
 
     console.log('hello');
   
-    const margin = ({top: 40, right: 40, bottom: 40, left: 80});
+    const margin = ({top: 40, right: 40, bottom: 40, left: 60});
     
-    const width = 700 - margin.left - margin.right;
-    const height = 700 - margin.top - margin.bottom;
+    const width = 675 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
 
     d3.select('.acceptanceChartBase').remove();
 
@@ -43,17 +43,27 @@ export default function salaryAndAcceptanceGraph(data) {
             .attr('fill', d=>color(d.Public_Private))
             .attr('opacity', '80%')
             .on('mouseenter', function(event, d) {
+
+                console.log("acceptance rate ", d.Acceptance_Rate);
                 let name = d.Name;
                 let rank = d.Rank;
                 let publicPrivate = d.Public_Private;
-                let acceptanceRate = d3.format('.0f')(d.Acceptance_Rate);
-                let alumniSalary = d.Alumni_Salary;
-                let undergradPop = d.Undergraduate_Population;
+                let acceptanceRate = (d.Acceptance_Rate)+"%";
+                let alumniSalary = d3.format('($,.0f')(d.Alumni_Salary);
+                let undergradPop = d3.format(',.0f')(d.Undergraduate_Population);
     
                 const pos = d3.pointer(event, window);
-                d3.select('.tooltip')
-                    .style('left', pos[0]+'px')
-                    .style('top', pos[1]+'px')
+                d3.select('#acceptanceTooltip')
+                    .style('left', (pos[0]-200)+'px')
+                    .style('top', ()=>{
+                        if (pos[1] > 600) {
+                            return (pos[1]-600)+"px";
+                        } 
+                        else {
+                            return pos[1]-400+"px";
+                        }
+                            
+                      })
                     .style('position', 'fixed')
                     .style('display', 'block')
                     .style('color', 'white')

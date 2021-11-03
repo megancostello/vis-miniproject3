@@ -10,6 +10,8 @@ d3.csv('universities.csv', d3.autoType).then(data=>{
         quartiles.second = data.filter(d=>d.Rank >= 164 && d.Rank <= 326);
         quartiles.third = data.filter(d=>d.Rank >= 327 && d.Rank <= 488);
         quartiles.fourth = data.filter(d=>d.Rank >= 489 && d.Rank <= 650);
+
+        console.log("quartiles ", quartiles);
     
         update(quartiles.first);
 

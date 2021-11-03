@@ -5,8 +5,8 @@ export default function pieChart(data) {
 
     const margin = {top:20, left:50, right:20, bottom:20};
 
-    const width = 650 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    const width = 450 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
     d3.select('.pieChartBase').remove();
 
@@ -16,7 +16,7 @@ export default function pieChart(data) {
         .attr("class", "pieChartBase");
 
     const arcArea = svg.append("g")
-        .attr("transform", "translate("+width/2+" 150)")
+        .attr("transform", "translate("+(width+margin.left+margin.right)/2+" 150)")
         .attr("class", ".arcArea");
 
     var color = d3.scaleOrdinal(["steelblue", "coral"]);
