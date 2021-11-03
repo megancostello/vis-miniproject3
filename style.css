@@ -25,6 +25,8 @@
 
 h1  {
     padding:10px;
+    text-align:center;
+    color: black;
 }
 
 #link {
@@ -39,4 +41,15 @@ h1  {
 
 .column {
     text-align:center;
+}
+
+#group-by {
+    color: black;
+    border-color: black;
+    background-color: white;
+    
+}
+
+label {
+    color: black;
 }
