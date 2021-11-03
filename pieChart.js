@@ -1,0 +1,87 @@
+export default function pieChart(data) {
+
+    const margin = {top:20, left:50, right:20, bottom:20};
+
+    const width = 650 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+    d3.select('.pieChartBase').remove();
+
+    const svg = d3.select('.pieChart').append('svg')
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("class", "pieChartBase");
+        
+    // const pieGroup = svg.append("g")
+    //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    const arcArea = svg.append("g")
+        .attr("transform", "translate("+width/2+" 150)")
+        .attr("class", ".arcArea");
+
+    var color = d3.scaleOrdinal(["steelblue", "coral"]);
+
+    const radius = 90;
+
+    // Generate the arcs
+    const arc = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius);
+
+    const labelArc = d3.arc()
+        .outerRadius(200)
+        .innerRadius(100);
+
+    console.log("arc ", arc);
+
+    //const arcArea = svg.append("g").attr("transform", "translate("+width/2+" 70)");
+
+    console.log('college data ', data);
+    const collegeData = data;
+
+    let totalPub = 0;
+    let totalPriv = 0;
+
+    collegeData.forEach(function(d) {
+        if (d.PublicPrivate == "Public") 
+            totalPub += 1;
+        else
+            totalPriv += 1;
+      });
+    
+    let totPubPriv = totalPub + totalPriv;
+    let percPub = Math.round(((totalPub/totPubPriv)*10000)/100);
+    let percPriv = Math.round(((totalPriv/totPubPriv)*10000)/100);
+
+    const pubPriv = [{type: "Public", value: percPub}, {type: "Private", value: percPriv}];
+
+    console.log("pubpriv ", pubPriv);
+  
+    // Generate the pie
+    const pie = d3.pie().value(function(d) {console.log(d); return d.value; });
+
+    console.log("pie ", pie);
+
+    //Generate groups
+    const arcs = pie(pubPriv);
+
+    const pieGroup = arcArea.selectAll(".pieGroup")
+        .data(arcs)
+        .enter()
+        .append("g")
+        .attr("class", "pieGroup");
+
+   pieGroup
+    .append("path")
+    .attr("fill", d=>color(d.value))
+    .attr("stroke", "white")
+    .attr("d", arc);
+
+    pieGroup
+        .append("text")
+        .attr("transform", function(d) { 
+                console.log
+                return "translate(" + labelArc.centroid(d) + ")"; 
+        })
+        .text(function(d) { return d.data.type; });
+}
