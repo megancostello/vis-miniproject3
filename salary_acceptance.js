@@ -42,7 +42,16 @@ export default function salaryAndAcceptanceGraph(data) {
             .attr('cx', d=>xScale(d.Acceptance_Rate))
             .attr('cy', d=>yScale(d.Alumni_Salary))
             .attr('r', 5)
-            .attr('fill', d=>color(d.Public_Private))
+            //.attr('fill', d=>color(d.Public_Private))
+            .attr('fill', d=> 
+                {if(d.Public_Private === 'Public') {
+                    return "steelblue"
+                }
+                else {
+                   return "coral"
+                }
+            }
+                )  
             .attr('opacity', '80%')
             .on('mouseenter', function(event, d) {
 

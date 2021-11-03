@@ -39,7 +39,16 @@ export default function salaryAndPriceGraph(data) {
             .attr('cx', d=>xScale(d.Total_Annual_Cost))
             .attr('cy', d=>yScale(d.Alumni_Salary))
             .attr('r', 5)
-            .attr('fill', d=>color(d.Public_Private))
+            //.attr('fill', d=>color(d.Public_Private))
+            .attr('fill', d=> 
+                {if(d.Public_Private === 'Public') {
+                    return "steelblue"
+                }
+                else {
+                   return "coral"
+                }
+            }
+                )  
             .attr('opacity', '80%')
             .on('mouseenter', function(event, d) {
                 let name = d.Name;
