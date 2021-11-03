@@ -11,9 +11,6 @@ export default function pieChart(data) {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .attr("class", "pieChartBase");
-        
-    // const pieGroup = svg.append("g")
-    //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     const arcArea = svg.append("g")
         .attr("transform", "translate("+width/2+" 150)")
@@ -72,10 +69,40 @@ export default function pieChart(data) {
         .attr("class", "pieGroup");
 
    pieGroup
-    .append("path")
-    .attr("fill", d=>color(d.value))
-    .attr("stroke", "white")
-    .attr("d", arc);
+        .append("path")
+        .attr("fill", d=>color(d.value))
+        .attr("stroke", "white")
+        .attr("d", arc)
+        .on("mouseover", function(event, d) {
+            console.log("MOUSED");
+            d3.select(this).transition()
+               .duration('50')
+               .attr('opacity', '.85');
+
+            let xPosition = width/2 + 30;
+            let yPosition = 150;
+
+            //Update the tooltip position and value
+            d3.select("#pieTooltip")
+                .style("left", xPosition + "px")
+                .style("top", yPosition + "px")
+                .select("#value")
+                .text(d.value+"%");
+
+            //Show the tooltip
+            d3.select("#pieTooltip").classed("hidden", false);
+        })
+        .on("mouseout", function(d) {
+            d3.select(this).transition()
+               .duration('50')
+               .attr('opacity', '1');
+            //Hide the tooltip
+            d3.select("#pieTooltip").classed("hidden", true);
+          })
+        .on("click", function(d, i) {
+            // Do something after clicking a bar
+                console.log("CLICKED");
+            });
 
     pieGroup
         .append("text")
